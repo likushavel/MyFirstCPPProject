@@ -1,0 +1,119 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    // 1
+    int totalSeconds;
+
+    cin >> totalSeconds;
+
+    int h1 = totalSeconds / 3600;
+    int m1 = (totalSeconds % 3600) / 60;
+    int s1 = totalSeconds % 60;
+
+    cout << h1 << " год " << m1 << " хв " << s1 << " сек\n\n";
+
+
+    // 2
+    double num;
+
+    cin >> num;
+
+    int hryvnias = (int)num;
+    int kopiyky = (num - hryvnias) * 100;
+
+    cout << hryvnias << " грн " << kopiyky << " коп\n\n";
+
+
+    // 3
+    int distance3, min3, sec3;
+
+    cin >> distance3;
+
+    cout << "Введіть час (хв сек): ";
+    cin >> min3 >> sec3;
+
+    int totalSec3 = min3 * 60 + sec3;
+    double speed3 = (distance3 / 1000.0) / (totalSec3 / 3600.0);
+
+    cout << "Швидкість: " << speed3 << " км/год\n\n";
+
+
+    // 4
+    int days;
+
+    cin >> days;
+
+    int weeks = days / 7;
+    int remDays = days % 7;
+
+    cout << weeks << " тижнів і " << remDays << " днів\n\n";
+
+
+    // 5
+    double distance5, time5;
+
+    cin >> distance5;
+
+    cout << "Введіть час (год): ";
+    cin >> time5;
+
+    double speed5 = distance5 / time5;
+
+    cout << "Потрібна швидкість: " << speed5 << " км/год\n\n";
+
+
+    // 6
+    double distance6, consumption;
+    double price1, price2, price3;
+
+
+    cin >> distance6;
+
+    cout << "Введіть витрату (л/100км): ";
+    cin >> consumption;
+
+    cout << "Введіть ціни 3 видів бензину: ";
+    cin >> price1 >> price2 >> price3;
+
+    double fuel = (distance6 * consumption) / 100;
+
+    cout << "Бензин 1: " << fuel * price1 << " грн\n";
+    cout << "Бензин 2: " << fuel * price2 << " грн\n";
+    cout << "Бензин 3: " << fuel * price3 << " грн\n\n";
+
+
+    // 7
+    int secFromStart;
+
+    cin >> secFromStart;
+
+    int h7 = secFromStart / 3600;
+    int m7 = (secFromStart % 3600) / 60;
+    int s7 = secFromStart % 60;
+
+    int remaining = 86400 - secFromStart;
+
+    int rh = remaining / 3600;
+    int rm = (remaining % 3600) / 60;
+    int rs = remaining % 60;
+
+    cout << "Поточний час: " << h7 << ":" << m7 << ":" << s7 << endl;
+    cout << "До опівночі: " << rh << " год " << rm << " хв " << rs << " сек\n\n";
+
+
+    // 8
+    int workedSec;
+
+    cin >> workedSec;
+
+    int workDay = 8 * 3600;
+    int left = workDay - workedSec;
+
+    int hoursLeft = left / 3600;
+
+    cout << "Залишилось цілих годин: " << hoursLeft << endl;
+
+    return 0;
+}
