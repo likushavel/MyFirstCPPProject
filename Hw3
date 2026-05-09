@@ -1,0 +1,218 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    // 1
+
+    int a;
+    int sum = 0;
+
+    cout << "Введіть a: ";
+    cin >> a;
+
+    for (int i = a; i <= 500; i++) {
+        sum += i;
+    }
+
+    cout << "Сума: " << sum << endl;
+
+
+    // 2
+
+    int x, y;
+    long long power = 1;
+
+    cout << "Введіть x: ";
+    cin >> x;
+
+    cout << "Введіть y: ";
+    cin >> y;
+
+    for (int i = 1; i <= y; i++) {
+        power *= x;
+    }
+
+    cout << "Результат: " << power << endl;
+
+
+    // 3
+
+    int total = 0;
+
+    for (int i = 1; i <= 1000; i++) {
+        total += i;
+    }
+
+    double average = total / 1000.0;
+
+    cout << "Середнє арифметичне: " << average << endl;
+
+
+    // 4
+
+    int start;
+    long long product = 1;
+
+    cout << "Введіть a (1 <= a <= 20): ";
+    cin >> start;
+
+    for (int i = start; i <= 20; i++) {
+        product *= i;
+    }
+
+    cout << "Добуток: " << product << endl;
+
+
+    // 5
+
+    int k;
+
+    cout << "Введіть число k: ";
+    cin >> k;
+
+    for (int i = 1; i <= 10; i++) {
+        cout << k << " * " << i << " = " << k * i << endl;
+    }
+
+
+    // 6
+
+    int A;
+
+    cout << "Введіть число A: ";
+    cin >> A;
+
+    for (int B = 1; B <= A; B++) {
+
+        if (A % (B * B) == 0 && A % (B * B * B) != 0) {
+            cout << B << " ";
+        }
+    }
+
+    cout << endl;
+
+
+    // 7
+
+    int number;
+
+    cout << "Введіть число: ";
+    cin >> number;
+
+    cout << "Дільники числа: ";
+
+    for (int i = 1; i <= number; i++) {
+
+        if (number % i == 0) {
+            cout << i << " ";
+        }
+    }
+
+    cout << endl;
+
+
+    // 8
+
+    int n1, n2;
+
+    cout << "Введіть перше число: ";
+    cin >> n1;
+
+    cout << "Введіть друге число: ";
+    cin >> n2;
+
+    cout << "Спільні дільники: ";
+
+    int minNum;
+
+    if (n1 < n2)
+        minNum = n1;
+    else
+        minNum = n2;
+
+    for (int i = 1; i <= minNum; i++) {
+
+        if (n1 % i == 0 && n2 % i == 0) {
+            cout << i << " ";
+        }
+    }
+
+    cout << endl;
+
+
+    // 9
+
+    char symbol;
+    int figure;
+
+    cout << "Введіть символ: ";
+    cin >> symbol;
+
+    cout << "1 - Квадрат\n";
+    cout << "2 - Прямокутник\n";
+    cout << "3 - Трикутник\n";
+
+    cout << "Оберіть фігуру: ";
+    cin >> figure;
+
+    if (figure == 1) {
+
+        int side;
+
+        cout << "Введіть сторону: ";
+        cin >> side;
+
+        for (int i = 0; i < side; i++) {
+
+            for (int j = 0; j < side; j++) {
+                cout << symbol;
+            }
+
+            cout << endl;
+        }
+    }
+
+    else if (figure == 2) {
+
+        int width, height;
+
+        cout << "Введіть ширину: ";
+        cin >> width;
+
+        cout << "Введіть висоту: ";
+        cin >> height;
+
+        for (int i = 0; i < height; i++) {
+
+            for (int j = 0; j < width; j++) {
+                cout << symbol;
+            }
+
+            cout << endl;
+        }
+    }
+
+    else if (figure == 3) {
+
+        int height;
+
+        cout << "Введіть висоту: ";
+        cin >> height;
+
+        for (int i = 1; i <= height; i++) {
+
+            for (int j = 1; j <= i; j++) {
+                cout << symbol;
+            }
+
+            cout << endl;
+        }
+    }
+
+    else {
+        cout << "Невірний вибір!" << endl;
+    }
+
+    return 0;
+}
