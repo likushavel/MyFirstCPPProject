@@ -1,0 +1,182 @@
+#include <iostream>
+#include <cstdlib>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+
+    // 1
+
+    int n;
+
+    cout << "Введіть число: ";
+    cin >> n;
+
+    for (int i = 0; i <= n; i++) {
+        cout << i << " ";
+    }
+
+    cout << endl;
+
+
+    // 2
+
+    int a, b;
+
+    cout << "\nВведіть першу межу: ";
+    cin >> a;
+
+    cout << "Введіть другу межу: ";
+    cin >> b;
+
+    if (a > b) {
+        int temp = a;
+        a = b;
+        b = temp;
+    }
+
+    cout << "Всі числа:\n";
+
+    for (int i = a; i <= b; i++) {
+        cout << i << " ";
+    }
+
+    cout << "\nПарні числа:\n";
+
+    for (int i = a; i <= b; i++) {
+
+        if (i % 2 == 0) {
+            cout << i << " ";
+        }
+    }
+
+    cout << "\nНепарні числа:\n";
+
+    for (int i = a; i <= b; i++) {
+
+        if (i % 2 != 0) {
+            cout << i << " ";
+        }
+    }
+
+    cout << "\nЧисла кратні 7:\n";
+
+    for (int i = a; i <= b; i++) {
+
+        if (i % 7 == 0) {
+            cout << i << " ";
+        }
+    }
+
+    cout << endl;
+
+
+    // 3
+
+    int start, end, sum = 0;
+
+    cout << "\nВведіть першу межу: ";
+    cin >> start;
+
+    cout << "Введіть другу межу: ";
+    cin >> end;
+
+    if (start > end) {
+        int temp = start;
+        start = end;
+        end = temp;
+    }
+
+    for (int i = start; i <= end; i++) {
+        sum += i;
+    }
+
+    cout << "Сума чисел: " << sum << endl;
+
+
+    // 4
+
+    int number, total = 0;
+
+    cout << "\nВводьте числа (0 - завершити):\n";
+
+    do {
+        cin >> number;
+        total += number;
+
+    } while (number != 0);
+
+    cout << "Сума: " << total << endl;
+
+
+    // 5
+
+    srand(time(0));
+
+    int secret = rand() % 500 + 1;
+    int guess;
+    int attempts = 0;
+
+    cout << "\nГра 'Вгадай число'\n";
+
+    do {
+
+        cout << "Введіть число (0 - вихід): ";
+        cin >> guess;
+
+        if (guess == 0) {
+            cout << "Гру завершено.\n";
+            break;
+        }
+
+        attempts++;
+
+        if (guess > secret) {
+            cout << "Загадане число менше.\n";
+        }
+        else if (guess < secret) {
+            cout << "Загадане число більше.\n";
+        }
+        else {
+            cout << "Ви вгадали число!\n";
+            cout << "Кількість спроб: " << attempts << endl;
+        }
+
+    } while (guess != secret);
+
+
+    // 6
+
+    int choice;
+    double amount;
+
+    cout << "\nКонвертер валют\n";
+    cout << "1 - Гривні в долари\n";
+    cout << "2 - Долари в гривні\n";
+
+    cout << "Ваш вибір: ";
+    cin >> choice;
+
+    if (choice == 1) {
+
+        cout << "Введіть суму в гривнях: ";
+        cin >> amount;
+
+        cout << "В доларах: " << amount / 41 << endl;
+    }
+
+    else if (choice == 2) {
+
+        cout << "Введіть суму в доларах: ";
+        cin >> amount;
+
+        cout << "В гривнях: " << amount * 41 << endl;
+    }
+
+    else {
+        cout << "Невірний вибір!" << endl;
+    }
+
+    return 0;
+}
