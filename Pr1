@@ -1,0 +1,120 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    // 1
+    int num1;
+    cout << "За1\nВведіть число: ";
+    cin >> num1;
+
+    if (num1 % 2 == 0)
+        cout << "Парне\n\n";
+    else
+        cout << "Непарне\n\n";
+
+
+    // 2
+    int a, b;
+    cout << "За2\nВведіть два числа: ";
+    cin >> a >> b;
+
+    if (a < b)
+        cout << "Менше: " << a << "\n\n";
+    else
+        cout << "Менше: " << b << "\n\n";
+
+
+    // 3
+    int num3;
+    cout << "За3\nВведіть число: ";
+    cin >> num3;
+
+    if (num3 > 0)
+        cout << "Додатне\n\n";
+    else if (num3 < 0)
+        cout << "Від'ємне\n\n";
+    else
+        cout << "Нуль\n\n";
+
+
+    // 4
+    int x, y;
+    cout << "За4\nВведіть два числа: ";
+    cin >> x >> y;
+
+    if (x == y)
+        cout << "Числа рівні\n\n";
+    else if (x < y)
+        cout << x << " " << y << "\n\n";
+    else
+        cout << y << " " << x << "\n\n";
+
+
+    // 5
+    int g1, g2, g3, g4, g5;
+    cout << "За5\nВведіть 5 оцінок: ";
+    cin >> g1 >> g2 >> g3 >> g4 >> g5;
+
+    double avg = (g1 + g2 + g3 + g4 + g5) / 5.0;
+
+    if (avg >= 4)
+        cout << "Допущено до іспиту\n\n";
+    else
+        cout << "Не допущено\n\n";
+
+
+    // 6
+    int num6;
+    cout << "За6\nВведіть число: ";
+    cin >> num6;
+
+    if (num6 % 2 == 0)
+        cout << "Результат: " << num6 * 3 << "\n\n";
+    else
+        cout << "Результат: " << num6 / 2.0 << "\n\n";
+
+
+    // 7
+    double n1, n2;
+    char op;
+    cout << "За7\nВведіть два числа: ";
+    cin >> n1 >> n2;
+
+    cout << "Введіть операцію (+ - * /): ";
+    cin >> op;
+
+    if (op == '+')
+        cout << "Результат: " << n1 + n2 << "\n\n";
+    else if (op == '-')
+        cout << "Результат: " << n1 - n2 << "\n\n";
+    else if (op == '*')
+        cout << "Результат: " << n1 * n2 << "\n\n";
+    else if (op == '/')
+        cout << "Результат: " << n1 / n2 << "\n\n";
+    else
+        cout << "Невірна операція\n\n";
+
+
+    // 8
+    double base;
+    int power;
+    cout << "За8\nВведіть число: ";
+    cin >> base;
+
+    cout << "Введіть степінь (0-7): ";
+    cin >> power;
+
+    if (power >= 0 && power <= 7) {
+        double result = 1;
+        for (int i = 0; i < power; i++)
+            result *= base;
+
+        cout << "Результат: " << result << endl;
+    }
+    else {
+        cout << "Невірний степінь\n";
+    }
+
+    return 0;
+}
