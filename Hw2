@@ -1,0 +1,220 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+    int maxNum, num;
+
+    cout << "Введіть 1 число: ";
+    cin >> maxNum;
+
+    for (int i = 2; i <= 7; i++) {
+        cout << "Введіть " << i << " число: ";
+        cin >> num;
+
+        if (num > maxNum) {
+            maxNum = num;
+        }
+    }
+
+    cout << "Максимальне число: " << maxNum << endl;
+
+
+
+
+    // 2
+
+    double ab, bc, weight;
+    int fuelPerKm;
+
+    cout << "Відстань А-В: ";
+    cin >> ab;
+
+    cout << "Відстань В-С: ";
+    cin >> bc;
+
+    cout << "Вага вантажу: ";
+    cin >> weight;
+
+    if (weight <= 500)
+        fuelPerKm = 1;
+    else if (weight <= 1000)
+        fuelPerKm = 4;
+    else if (weight <= 1500)
+        fuelPerKm = 7;
+    else if (weight <= 2000)
+        fuelPerKm = 9;
+    else {
+        cout << "Літак не піднімає такий вантаж!" << endl;
+        return 0;
+    }
+
+    double fuelAB = ab * fuelPerKm;
+    double fuelBC = bc * fuelPerKm;
+
+    if (fuelAB > 300 || fuelBC > 300) {
+        cout << "Неможливо подолати маршрут!" << endl;
+    }
+    else {
+        double remain = 300 - fuelAB;
+
+        if (remain >= fuelBC) {
+            cout << "Дозаправка не потрібна." << endl;
+        }
+        else {
+            double need = fuelBC - remain;
+            cout << "Мінімальна дозаправка: " << need << " л" << endl;
+        }
+    }
+
+
+
+
+    // 3
+
+    double s1, s2, s3;
+    double z1, z2, z3;
+
+    cout << "Продажі менеджера 1: ";
+    cin >> s1;
+
+    cout << "Продажі менеджера 2: ";
+    cin >> s2;
+
+    cout << "Продажі менеджера 3: ";
+    cin >> s3;
+
+    // Менеджер 1
+    if (s1 < 500)
+        z1 = 200 + s1 * 0.03;
+    else if (s1 <= 1000)
+        z1 = 200 + s1 * 0.05;
+    else
+        z1 = 200 + s1 * 0.08;
+
+    // Менеджер 2
+    if (s2 < 500)
+        z2 = 200 + s2 * 0.03;
+    else if (s2 <= 1000)
+        z2 = 200 + s2 * 0.05;
+    else
+        z2 = 200 + s2 * 0.08;
+
+    // Менеджер 3
+    if (s3 < 500)
+        z3 = 200 + s3 * 0.03;
+    else if (s3 <= 1000)
+        z3 = 200 + s3 * 0.05;
+    else
+        z3 = 200 + s3 * 0.08;
+
+    double maxSalary = z1;
+    int best = 1;
+
+    if (z2 > maxSalary) {
+        maxSalary = z2;
+        best = 2;
+    }
+
+    if (z3 > maxSalary) {
+        maxSalary = z3;
+        best = 3;
+    }
+
+    if (best == 1)
+        z1 += 200;
+    else if (best == 2)
+        z2 += 200;
+    else
+        z3 += 200;
+
+    cout << "Зарплата менеджера 1: " << z1 << endl;
+    cout << "Зарплата менеджера 2: " << z2 << endl;
+    cout << "Зарплата менеджера 3: " << z3 << endl;
+
+    cout << "Найкращий менеджер: " << best << endl;
+
+
+
+
+    // 4
+    int choice;
+
+    cout << "1 - Скільки рядків треба написати\n";
+    cout << "2 - Скільки разів можна запізнитись\n";
+    cout << "3 - Яка буде зарплата\n";
+
+    cout << "Ваш вибір: ";
+    cin >> choice;
+
+    if (choice == 1) {
+
+        double income;
+        int late;
+
+        cout << "Бажаний дохід: ";
+        cin >> income;
+
+        cout << "Кількість запізнень: ";
+        cin >> late;
+
+        double fine = (late / 3) * 20;
+
+        double lines = ((income + fine) / 50) * 100;
+
+        cout << "Потрібно написати " << lines << " рядків коду" << endl;
+    }
+
+    else if (choice == 2) {
+
+        int lines;
+        double desired;
+
+        cout << "Кількість рядків: ";
+        cin >> lines;
+
+        cout << "Бажана зарплата: ";
+        cin >> desired;
+
+        double salary = (lines / 100.0) * 50;
+
+        if (salary < desired) {
+            cout << "Таку зарплату отримати неможливо" << endl;
+        }
+        else {
+            double extra = salary - desired;
+
+            int lates = (extra / 20) * 3;
+
+            cout << "Можна запізнитись " << lates << " разів" << endl;
+        }
+    }
+
+    else if (choice == 3) {
+
+        int lines, late;
+
+        cout << "Кількість рядків: ";
+        cin >> lines;
+
+        cout << "Кількість запізнень: ";
+        cin >> late;
+
+        double salary = (lines / 100.0) * 50;
+        double fine = (late / 3) * 20;
+
+        double finalSalary = salary - fine;
+
+        if (finalSalary <= 0) {
+            cout << "Васі не заплатять" << endl;
+        }
+        else {
+            cout << "Зарплата Васі: " << finalSalary << "$" << endl;
+        }
+    }
+
+    else {
+        cout << "Невірний вибір!" << endl;
+    }
+
+    return 0;
+}
