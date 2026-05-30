@@ -1,0 +1,140 @@
+#include <iostream>
+using namespace std;
+
+int main() {
+
+    //1
+
+    float profits[12];
+    float total = 0;
+
+    for (int i = 0; i < 12; i++) {
+        cin >> profits[i];
+        total += profits[i];
+    }
+
+    float maxProfit = profits[0];
+    float minProfit = profits[0];
+    int maxMonth = 1;
+    int minMonth = 1;
+
+    for (int i = 1; i < 12; i++) {
+        if (profits[i] > maxProfit) {
+            maxProfit = profits[i];
+            maxMonth = i + 1;
+        }
+
+        if (profits[i] < minProfit) {
+            minProfit = profits[i];
+            minMonth = i + 1;
+        }
+    }
+
+    cout << total << endl;
+    cout << total / 12 << endl;
+    cout << maxMonth << endl;
+    cout << minMonth << endl;
+
+
+    //2
+
+    int arr[10];
+
+    for (int i = 0; i < 10; i++) {
+        cin >> arr[i];
+    }
+
+    for (int i = 9; i >= 0; i--) {
+        cout << arr[i] << " ";
+    }
+
+    cout << endl;
+
+
+    //3
+
+    float sides[5];
+    float perimeter = 0;
+
+    for (int i = 0; i < 5; i++) {
+        cin >> sides[i];
+        perimeter += sides[i];
+    }
+
+    cout << perimeter << endl;
+
+
+    //4
+
+    int a[9] = { 0, -11, 0, 12, 54, 0, 0, -40, 11 };
+    int result1[9];
+
+    int index1 = 0;
+
+    for (int i = 0; i < 9; i++) {
+        if (a[i] != 0) {
+            result1[index1++] = a[i];
+        }
+    }
+
+    while (index1 < 9) {
+        result1[index1++] = -1;
+    }
+
+    for (int i = 0; i < 9; i++) {
+        cout << result1[i] << " ";
+    }
+
+    cout << endl;
+
+
+    //5
+
+    int arr1[5] = { 10, 0, 52, -10, -44 };
+    int arr2[5] = { 54, 0, -100, 12, 4 };
+
+    int result2[10];
+    int index2 = 0;
+
+    for (int i = 0; i < 5; i++) {
+        if (arr1[i] > 0) {
+            result2[index2++] = arr1[i];
+        }
+    }
+
+    for (int i = 0; i < 5; i++) {
+        if (arr2[i] > 0) {
+            result2[index2++] = arr2[i];
+        }
+    }
+
+    for (int i = 0; i < 5; i++) {
+        if (arr1[i] == 0) {
+            result2[index2++] = arr1[i];
+        }
+    }
+
+    for (int i = 0; i < 5; i++) {
+        if (arr2[i] == 0) {
+            result2[index2++] = arr2[i];
+        }
+    }
+
+    for (int i = 0; i < 5; i++) {
+        if (arr1[i] < 0) {
+            result2[index2++] = arr1[i];
+        }
+    }
+
+    for (int i = 0; i < 5; i++) {
+        if (arr2[i] < 0) {
+            result2[index2++] = arr2[i];
+        }
+    }
+
+    for (int i = 0; i < 10; i++) {
+        cout << result2[i] << " ";
+    }
+
+    return 0;
+}
