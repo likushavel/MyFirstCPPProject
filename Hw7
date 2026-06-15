@@ -1,0 +1,163 @@
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+int main() {
+
+    // 1
+
+    int arr1[3][3];
+    int num1;
+
+    cin >> num1;
+
+    int value1 = num1;
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            arr1[i][j] = value1;
+            value1 *= 2;
+        }
+    }
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << arr1[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    cout << endl;
+
+
+    // 2
+
+    int arr2[3][3];
+    int num2;
+
+    cin >> num2;
+
+    int value2 = num2;
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            arr2[i][j] = value2;
+            value2++;
+        }
+    }
+
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            cout << arr2[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    cout << endl;
+
+
+    // 3
+
+    srand(time(0));
+
+    const int rows = 3;
+    const int cols = 6;
+
+    int arr3[rows][cols];
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            arr3[i][j] = rand() % 10;
+        }
+    }
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << arr3[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    cout << endl;
+
+    int shifts;
+    int direction;
+
+    cin >> shifts;
+    cin >> direction;
+
+    for (int s = 0; s < shifts; s++) {
+
+        
+        if (direction == 1) {
+
+            for (int i = 0; i < rows; i++) {
+
+                int temp = arr3[i][cols - 1];
+
+                for (int j = cols - 1; j > 0; j--) {
+                    arr3[i][j] = arr3[i][j - 1];
+                }
+
+                arr3[i][0] = temp;
+            }
+        }
+
+        
+        if (direction == 2) {
+
+            for (int i = 0; i < rows; i++) {
+
+                int temp = arr3[i][0];
+
+                for (int j = 0; j < cols - 1; j++) {
+                    arr3[i][j] = arr3[i][j + 1];
+                }
+
+                arr3[i][cols - 1] = temp;
+            }
+        }
+
+     
+        if (direction == 3) {
+
+            for (int j = 0; j < cols; j++) {
+
+                int temp = arr3[rows - 1][j];
+
+                for (int i = rows - 1; i > 0; i--) {
+                    arr3[i][j] = arr3[i - 1][j];
+                }
+
+                arr3[0][j] = temp;
+            }
+        }
+
+       
+        if (direction == 4) {
+
+            for (int j = 0; j < cols; j++) {
+
+                int temp = arr3[0][j];
+
+                for (int i = 0; i < rows - 1; i++) {
+                    arr3[i][j] = arr3[i + 1][j];
+                }
+
+                arr3[rows - 1][j] = temp;
+            }
+        }
+    }
+
+    cout << endl;
+
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << arr3[i][j] << " ";
+        }
+        cout << endl;
+    }
+
+    return 0;
+}
