@@ -1,0 +1,163 @@
+#include <iostream>
+#include <ctime>
+
+using namespace std;
+
+// 1 
+
+void task1() {
+
+    const int ROWS = 3;
+    const int COLS = 4;
+
+    int arr[ROWS][COLS] = {
+        {3, 5, 6, 7},
+        {12, 1, 1, 1},
+        {0, 7, 12, 1}
+    };
+
+    int sum = 0;
+    int min = arr[0][0];
+    int max = arr[0][0];
+
+    for(int i = 0; i < ROWS; i++) {
+
+        for(int j = 0; j < COLS; j++) {
+
+            sum += arr[i][j];
+
+            if(arr[i][j] < min)
+                min = arr[i][j];
+
+            if(arr[i][j] > max)
+                max = arr[i][j];
+        }
+    }
+
+    double average = (double)sum / (ROWS * COLS);
+
+    cout << "\nЗавдання 1\n";
+    cout << "Сума = " << sum << endl;
+    cout << "Середнє = " << average << endl;
+    cout << "Мінімум = " << min << endl;
+    cout << "Максимум = " << max << endl;
+}
+
+// 2 
+
+void task2() {
+
+    const int ROWS = 3;
+    const int COLS = 4;
+
+    int arr[ROWS][COLS] = {
+        {3, 5, 6, 7},
+        {12, 1, 1, 1},
+        {0, 7, 12, 1}
+    };
+
+    cout << "\nЗавдання 2\n\n";
+
+    int total = 0;
+
+    for(int i = 0; i < ROWS; i++) {
+
+        int rowSum = 0;
+
+        for(int j = 0; j < COLS; j++) {
+            rowSum += arr[i][j];
+        }
+
+        total += rowSum;
+
+        for(int j = 0; j < COLS; j++) {
+            cout << arr[i][j] << "\t";
+        }
+
+        cout << " | " << rowSum << endl;
+    }
+
+    cout << "-----------------------------\n";
+
+    for(int j = 0; j < COLS; j++) {
+
+        int colSum = 0;
+
+        for(int i = 0; i < ROWS; i++) {
+            colSum += arr[i][j];
+        }
+
+        cout << colSum << "\t";
+    }
+
+    cout << " | " << total << endl;
+}
+
+// 3
+
+void task3() {
+
+    srand(time(0));
+
+    const int ROWS1 = 5;
+    const int COLS1 = 10;
+
+    int arr1[ROWS1][COLS1];
+    int arr2[5][5];
+
+    for(int i = 0; i < ROWS1; i++) {
+
+        for(int j = 0; j < COLS1; j++) {
+
+            arr1[i][j] = rand() % 51;
+        }
+    }
+
+    int k = 0;
+
+    for(int i = 0; i < 5; i++) {
+
+        for(int j = 0; j < 5; j++) {
+
+            arr2[i][j] = arr1[k / 10][k % 10] +
+                         arr1[(k + 1) / 10][(k + 1) % 10];
+
+            k += 2;
+        }
+    }
+
+    cout << "\nЗавдання 3\n\n";
+
+    cout << "Перший масив:\n";
+
+    for(int i = 0; i < ROWS1; i++) {
+
+        for(int j = 0; j < COLS1; j++) {
+            cout << arr1[i][j] << "\t";
+        }
+
+        cout << endl;
+    }
+
+    cout << "\nДругий масив:\n";
+
+    for(int i = 0; i < 5; i++) {
+
+        for(int j = 0; j < 5; j++) {
+            cout << arr2[i][j] << "\t";
+        }
+
+        cout << endl;
+    }
+}
+
+
+
+int main() {
+
+    task1();
+    task2();
+    task3();
+
+    return 0;
+}
