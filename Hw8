@@ -1,0 +1,289 @@
+#include <iostream>
+using namespace std;
+
+struct Contact {
+    char name[40];
+    char phone[20];
+};
+
+bool isEqual(const char* str1, const char* str2);
+void copyStr(char* dest, const char* src);
+bool isGreater(const char* str1, const char* str2);
+bool inMatrix(int** matrix, int rows, int cols, int value);
+bool inArray(int* arr, int size, int value);
+void addColumn(int**& matrix, int rows, int& cols, int colIndex, int value);
+void removeColumn(int**& matrix, int rows, int& cols, int colIndex);
+void shiftMatrix(int** matrix, int rows, int cols, char direction, int steps);
+void transpose(int**& matrix, int& rows, int& cols);
+void printMatrix(int** matrix, int rows, int cols);
+
+int main() {
+    // task 1
+    /*
+    int r = 3, c = 3;
+    int** M = new int* [r];
+    for (int i = 0; i < r; i++) {
+        M[i] = new int[c];
+        for (int j = 0; j < c; j++) {
+            M[i][j] = i * c + j + 1;
+        }
+    }
+
+    addColumn(M, r, c, 1, 99);
+    printMatrix(M, r, c);
+    */
+
+    // task 2
+    /*
+    removeColumn(M, r, c, 1);
+    printMatrix(M, r, c);
+    */
+
+    // task 3
+    /*
+    shiftMatrix(M, r, c, 'r', 1);
+    printMatrix(M, r, c);
+    */
+
+    // task 4
+    /*
+    transpose(M, r, c);
+    printMatrix(M, r, c);
+
+    for (int i = 0; i < r; i++) delete[] M[i];
+    delete[] M;
+    */
+
+    // task 5
+    /*
+    Contact book[2];
+    copyStr(book[0].name, "Alex");
+    copyStr(book[0].phone, "12345");
+    copyStr(book[1].name, "Oleg");
+    copyStr(book[1].phone, "67890");
+
+    char q[40] = "Alex";
+    for (int i = 0; i < 2; i++) {
+        if (isEqual(book[i].name, q)) {
+            cout << book[i].name << " -> " << book[i].phone << endl;
+        }
+    }
+    */
+
+    // task 6
+    /*
+    char students[5][40] = { "Petrov", "Ivanov", "Sidorov", "Abramov", "Volkov" };
+    for (int i = 0; i < 4; i++) {
+        for (int j = 0; j < 4 - i; j++) {
+            if (isGreater(students[j], students[j + 1])) {
+                char temp[40];
+                copyStr(temp, students[j]);
+                copyStr(students[j], students[j + 1]);
+                copyStr(students[j + 1], temp);
+            }
+        }
+    }
+    */
+
+    // task 7
+    /*
+    int rA = 2, cA = 2;
+    int rB = 2, cB = 2;
+    int rC = 2, cC = 2;
+
+    int** A = new int* [rA];
+    int** B = new int* [rB];
+    int** C = new int* [rC];
+
+    for (int i = 0; i < 2; i++) {
+        A[i] = new int[2]; B[i] = new int[2]; C[i] = new int[2];
+    }
+
+    A[0][0] = 1; A[0][1] = -2; A[1][0] = 3; A[1][1] = 4;
+    B[0][0] = 1; B[0][1] = 5;  B[1][0] = -2; B[1][1] = 6;
+    C[0][0] = 1; C[0][1] = -2; C[1][0] = 7; C[1][1] = 8;
+
+    int* common = new int[rA * cA];
+    int countC = 0;
+    for (int i = 0; i < rA; i++) {
+        for (int j = 0; j < cA; j++) {
+            int v = A[i][j];
+            if (inMatrix(B, rB, cB, v) && inMatrix(C, rC, cC, v) && !inArray(common, countC, v)) {
+                common[countC++] = v;
+            }
+        }
+    }
+
+    int* neg = new int[rA * cA + rB * cB + rC * cC];
+    int countN = 0;
+    for (int i = 0; i < rA; i++) {
+        for (int j = 0; j < cA; j++) {
+            if (A[i][j] < 0 && !inArray(neg, countN, A[i][j])) neg[countN++] = A[i][j];
+        }
+    }
+    for (int i = 0; i < rB; i++) {
+        for (int j = 0; j < cB; j++) {
+            if (B[i][j] < 0 && !inArray(neg, countN, B[i][j])) neg[countN++] = B[i][j];
+        }
+    }
+    for (int i = 0; i < rC; i++) {
+        for (int j = 0; j < cC; j++) {
+            if (C[i][j] < 0 && !inArray(neg, countN, C[i][j])) neg[countN++] = C[i][j];
+        }
+    }
+
+    delete[] common;
+    delete[] neg;
+    for (int i = 0; i < 2; i++) {
+        delete[] A[i]; delete[] B[i]; delete[] C[i];
+    }
+    delete[] A; delete[] B; delete[] C;
+    */
+}
+
+bool isEqual(const char* str1, const char* str2) {
+    int i = 0;
+    while (str1[i] != '\0' && str2[i] != '\0') {
+        if (str1[i] != str2[i]) return false;
+        i++;
+    }
+    return str1[i] == str2[i];
+}
+void copyStr(char* dest, const char* src) {
+    int i = 0;
+    while (src[i] != '\0') {
+        dest[i] = src[i];
+        i++;
+    }
+    dest[i] = '\0';
+}
+boolisGreater(const char* str1, const char* str2) {
+    int i = 0;
+    while (str1[i] != '\0' && str2[i] != '\0') {
+        if (str1[i] > str2[i]) return true;
+        if (str1[i] < str2[i]) return false;
+        i++;
+    }
+    return str1[i] != '\0';
+}
+bool inMatrix(int** matrix, int rows, int cols, int value) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            if (matrix[i][j] == value) return true;
+        }
+    }
+    return false;
+}
+bool inArray(int* arr, int size, int value) {
+    for (int i = 0; i < size; i++) {
+        if (arr[i] == value) return true;
+    }
+    return false;
+}
+void addColumn(int**& matrix, int rows, int& cols, int colIndex, int value) {
+    for (int i = 0; i < rows; i++) {
+        int* newRow = new int[cols + 1];
+        for (int j = 0; j < colIndex; j++) {
+            newRow[j] = matrix[i][j];
+        }
+        newRow[colIndex] = value;
+        for (int j = colIndex; j < cols; j++) {
+            newRow[j + 1] = matrix[i][j];
+        }
+        delete[] matrix[i];
+        matrix[i] = newRow;
+    }
+    cols++;
+}
+void removeColumn(int**& matrix, int rows, int& cols, int colIndex) {
+    if (cols <= 0  colIndex < 0  colIndex >= cols) return;
+    for (int i = 0; i < rows; i++) {
+        int* newRow = new int[cols - 1];
+        for (int j = 0; j < colIndex; j++) {
+            newRow[j] = matrix[i][j];
+        }
+        for (int j = colIndex + 1; j < cols; j++) {
+            newRow[j - 1] = matrix[i][j];
+        }
+        delete[] matrix[i];
+        matrix[i] = newRow;
+    }
+    cols--;
+}
+void shiftMatrix(int** matrix, int rows, int cols, char direction, int steps) {
+    if (direction == 'r' || direction == 'l') steps %= cols;
+    if (direction == 'u' || direction == 'd') steps %= rows;
+    if (steps == 0) return;
+
+    if (direction == 'r') {
+        for (int s = 0; s < steps; s++) {
+            for (int i = 0; i < rows; i++) {
+                int last = matrix[i][cols - 1];
+                for (int j = cols - 1; j > 0; j--) {
+                    matrix[i][j] = matrix[i][j - 1];
+                }
+                matrix[i][0] = last;
+            }
+        }
+    }
+    else if (direction == 'l') {
+        for (int s = 0; s < steps; s++) {
+            for (int i = 0; i < rows; i++) {
+                int first = matrix[i][0];
+                for (int j = 0; j < cols - 1; j++) {
+                    matrix[i][j] = matrix[i][j + 1];
+                }
+                matrix[i][cols - 1] = first;
+            }
+        }
+    }
+    else if (direction == 'd') {
+        for (int s = 0; s < steps; s++) {
+            int* lastRow = new int[cols];
+            for (int j = 0; j < cols; j++) lastRow[j] = matrix[rows - 1][j];
+            for (int i = rows - 1; i > 0; i--) {
+                for (int j = 0; j < cols; j++) matrix[i][j] = matrix[i - 1][j];
+            }
+            for (int j = 0; j < cols; j++) matrix[0][j] = lastRow[j];
+            delete[] lastRow;
+        }
+    }
+    else if (direction == 'u') {
+        for (int s = 0; s < steps; s++) {
+            int* firstRow = new int[cols];
+            for (int j = 0; j < cols; j++) firstRow[j] = matrix[0][j];
+            for (int i = 0; i < rows - 1; i++) {
+                for (int j = 0; j < cols; j++) matrix[i][j] = matrix[i + 1][j];
+            }
+            for (int j = 0; j < cols; j++) matrix[rows - 1][j] = firstRow[j];
+            delete[] firstRow;
+        }
+    }
+}
+void transpose(int**& matrix, int& rows, int& cols) {
+    int** temp = new int* [cols];
+    for (int i = 0; i < cols; i++) {
+        temp[i] = new int[rows];
+    }
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            temp[j][i] = matrix[i][j];
+        }
+    }
+    for (int i = 0; i < rows; i++) {
+        delete[] matrix[i];
+    }
+    delete[] matrix;
+    matrix = temp;
+    int t = rows;
+    rows = cols;
+    cols = t;
+}
+void printMatrix(int** matrix, int rows, int cols) {
+    for (int i = 0; i < rows; i++) {
+        for (int j = 0; j < cols; j++) {
+            cout << matrix[i][j] << " ";
+        }
+        cout << endl;}
+    cout << endl;
+}
