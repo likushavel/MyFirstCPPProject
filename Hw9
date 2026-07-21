@@ -1,0 +1,77 @@
+//#include <iostream>
+//#include <fstream>
+//#include <cstdio>
+//
+//using namespace std;
+//
+//double Max(int* arr, int size);
+//double Min(int* arr, int size);
+//double Avg(int* arr, int size);
+//double Action(int* A, int* B, int size, double (*func)(int*, int));
+//
+//int main() {
+//
+// ofstream file("system33.txt");
+//
+// if (file.is_open()) {
+//  file << "System!!!";
+//  file.close();
+// }
+//
+// const int size = 3;
+// int A[size] = { 1, 5, 2 };
+// int B[size] = { 7, 2, 4 };
+//
+// int choose;
+// cout << "1. Max" << endl;
+// cout << "2. Min" << endl;
+// cout << "3. Avg" << endl;
+// cout << "Enter choose: ";
+// cin >> choose;
+//
+// if (choose == 1)
+//  cout << Action(A, B, 3, Max);
+// else if (choose == 2)
+//  cout << Action(A, B, 3, Min);
+// else if (choose == 3)
+//  cout << Action(A, B, 3, Avg);
+// else {
+//  if (remove("system33.txt") == 0) {
+//   cout << "delete system33";
+//  }
+//  else {
+//   perror("Error :((");
+//  }
+// }
+//
+//}
+//
+//double Max(int* arr, int size) {
+// int max = arr[0];
+// for (int i = 1; i < size; i++) {
+//  if (arr[i] > max)
+//   max = arr[i];
+// }
+// return max;
+//}
+//
+//double Min(int* arr, int size) {
+// int min = arr[0];
+// for (int i = 1; i < size; i++) {
+//  if (arr[i] < min)
+//   min = arr[i];
+// }
+// return min;
+//}
+//
+//double Avg(int* arr, int size) {
+// double sum = 0;
+// for (int i = 0; i < size; i++) {
+//  sum += arr[i];
+// }
+// return sum / size;
+//}
+//
+//double Action(int* A, int* B, int size, double (*func)(int*, int)) {
+// return func(A, size) + func(B, size);
+//}
